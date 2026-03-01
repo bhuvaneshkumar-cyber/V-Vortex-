@@ -1,11 +1,18 @@
+import streamlit as st
 import google.generativeai as genai
-
-GEMINI_API_KEY = "AIzaSyDoaboDLjgzCdJZMkyWL1ZUAGbDtanjrZM"
+try:
+    GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
+except KeyError:
+    GEMINI_API_KEY = None
+    print("Warning: GEMINI_API_KEY not found in secrets.")
 
 try:
-    genai.configure(api_key=GEMINI_API_KEY)
-    ai_model = genai.GenerativeModel("gemini-2.5-flash-lite")
-    ai_available = True
+    if GEMINI_API_KEY:
+        genai.configure(api_key=GEMINI_API_KEY)
+        ai_model = genai.GenerativeModel("gemini-2.5-flash-lite")
+        ai_available = True
+    else:
+        ai_available = False
 except Exception as e:
     ai_available = False
     print(f"AI Setup Error: {e}")
@@ -21,7 +28,7 @@ Your goal is to help users improve sleep, reduce screen time, and lower stress w
 
 def get_ai_response(user_input, chat_history):
     if not ai_available:
-        return "⚠️ Gemini API Key is missing or invalid. Check setup."
+        return "⚠️ Gemini API Key is missing or invalid. Please check your .streamlit/secrets.toml file."
     try:
         history_for_gemini = []
         history_for_gemini.append({"role": "user", "parts": [SYSTEM_CONTEXT]})
