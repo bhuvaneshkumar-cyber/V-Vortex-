@@ -1,4 +1,4 @@
-# V-Vortex
+# V-Vortex-Hackathon
 # Rhythm Anchor
 
 AI-Powered Mental Well-Being Risk Indicator (Non-Clinical)
