@@ -20,3 +20,17 @@ Rhythm Anchor is a privacy-first, interactive wellness companion built with Stre
 * Machine Learning: Scikit-learn (`IsolationForest`)
 * Visualisations: Altair
 * Generative AI: Google Generative AI SDK (`google-generativeai`)
+
+# How to use
+* Sign Up/Log In: Create a new profile or log in with credentials.
+
+* Input Daily Stats: Open the controls in the sidebar to simulate your day—adjust your alarm time, wake-up time, daily steps, symptoms, and lifestyle factors.
+
+* Simulate Scrolling: Adjust your thumb physics (scroll speed and erraticness) to see if the app detects a doomscrolling risk in the "🛑 Doomscroll" tab.
+
+* Save & Track: Hit "💾 Save Daily Stats" to log your data and watch your stability trend line populate.
+
+* Chat with the AI: Click the floating 💬 button in the bottom right corner to get actionable advice from your AI coach.
+
+# Disclaimer
+Rhythm Anchor is a non-clinical tool. The stability index and AI insights provided are for educational and self-reflection purposes only and should not be used as a substitute for professional medical or psychiatric advice.
