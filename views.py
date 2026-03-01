@@ -2,8 +2,6 @@ import streamlit as st
 import pandas as pd
 import altair as alt
 from datetime import time
-
-# Import external modules
 from analytics import calculate_hybrid_stability, generate_scroll_pattern, detect_doomscrolling, model
 from ai_service import get_ai_response
 from styles import apply_dark_theme
@@ -70,14 +68,12 @@ def show_main_app():
     current_user = st.session_state["username"]
     user_data = st.session_state["user_db"].get(current_user, {})
 
-    # 1. Account Floater
     with st.container():
         st.markdown('<div class="account-floater">', unsafe_allow_html=True)
         if st.button("👤", key="btn_account_float", help="Account"):
             st.session_state.show_account_window = not st.session_state.show_account_window
         st.markdown("</div>", unsafe_allow_html=True)
 
-    # 2. Chat Floater
     with st.container():
         st.markdown('<div class="chat-floater">', unsafe_allow_html=True)
         if st.button("💬", key="btn_chat_float", help="Chat"):
@@ -85,7 +81,6 @@ def show_main_app():
             st.rerun()
         st.markdown("</div>", unsafe_allow_html=True)
 
-    # SIDEBAR SWAP LOGIC
     with st.sidebar:
         if st.session_state.show_chat_window:
             st.markdown("### 💬 AI Coach")
@@ -152,7 +147,6 @@ def show_main_app():
                 st.session_state["page"] = "landing"
                 st.rerun()
 
-    # ACCOUNT OVERLAY
     if st.session_state.show_account_window:
         with st.expander("👤 Account Profile", expanded=True):
             e_name = st.text_input("Name", user_data.get("full_name", ""))
@@ -162,7 +156,6 @@ def show_main_app():
                 st.session_state["user_db"][current_user]["age"] = e_age
                 st.success("Updated!")
 
-    # MAIN DASHBOARD
     st.markdown(f"## 🧠 Rhythm Anchor")
     st.caption(f"Welcome back, {user_data.get('full_name', current_user)}")
     tab1, tab2 = st.tabs(["📊 Dashboard", "🛑 Doomscroll"])
